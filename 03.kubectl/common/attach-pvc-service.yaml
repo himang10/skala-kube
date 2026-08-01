@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: attach-pvc-svc
+  namespace: class-2
+spec:
+  selector:
+    app: attach-my-pod
+  ports:
+    - name: default
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
