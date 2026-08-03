@@ -1,0 +1,6 @@
+webserver-service.yaml
+diff-attach-pod.yaml
+change-nginx-pod.yaml
+attach-pvc-pod.yaml
+resource.yaml
+webserver-deploy.yaml

@@ -17,10 +17,9 @@ spec:
       labels:
         app: {{USER_NAME}}-deploy-test
     spec:
-      serviceAccountName: default
       containers:
         - name: nginx
-          image: nginx:mainline-alpine
+          image: nginx:latest
           imagePullPolicy: Always
           env:
             - name: USER_NAME

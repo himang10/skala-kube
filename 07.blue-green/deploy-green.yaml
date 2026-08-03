@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sk0199-myfirst-api-server-new
+  namespace: class-0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sk0199-myfirst-api-server-new
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8080'
+        prometheus.io/path: '/actuator/prometheus'
+        update: 36718fc8
+      labels:
+        app: sk0199-myfirst-api-server-new
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: myfirst-api-server
+        image: skala-registry.skala-ai.com/class-0/sk0199-myfirst-api-server:2.0.0-NEW
+        imagePullPolicy: Always
+        env:
+        - name: USER_NAME
+          value: sk0199
+        - name: NAMESPACE
+          value: class-0
