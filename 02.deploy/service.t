@@ -1,11 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{USER_NAME}}-{{SERVICE_NAME}}
+  name: {{USER_NAME}}-webserver
   namespace: {{NAMESPACE}}
+  labels:
+    app: {{USER_NAME}}-webserver
 spec:
+  type: ClusterIP
   selector:
-    app: {{USER_NAME}}-{{SERVICE_NAME}}
+    app: {{USER_NAME}}-webserver
   ports:
     - name: http
       protocol: TCP
@@ -15,6 +18,5 @@ spec:
       protocol: TCP
       port: 8081
       targetPort: 8081
-  type: ClusterIP
 
 

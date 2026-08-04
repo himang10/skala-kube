@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: attach-my-deploy
+  labels:
+    app: attach-my-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: attach-my-deploy
+      version: "1.0"
+  template:
+    metadata:
+      labels:
+        app: attach-my-deploy
+        version: "1.0"
+    spec:
+      containers:
+      - name: explorer
+        image: ubuntu:24.04
+        command: ["sh"]
+        args:
+        - -c
+        - |
+          while true; do
+            echo "$(date) - Running with SECRET_USERNAME=$SECRET_USERNAME and SECRET_PASSWORD=$SECRET_PASSWORD";
+            sleep 3;
+          done
+        env:
+        - name: SECRET_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: username
+        - name: SECRET_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: password
+        volumeMounts:
+        - name: shared-storage
+          mountPath: /shared-data
+        - name: config-volume
+          mountPath: /etc/config
+      volumes:
+      - name: shared-storage
+        persistentVolumeClaim:
+          claimName: my-pvc
+      - name: config-volume
+        configMap:
+          name: my-config
+

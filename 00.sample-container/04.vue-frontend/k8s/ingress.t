@@ -23,21 +23,21 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{USER_NAME}}-webserver
+                name: {{USER_NAME}}-myfirst-api-server
                 port:
                   number: 8080
           - path: /python
             pathType: Prefix
             backend:
               service:
-                name: {{USER_NAME}}-webserver
+                name: {{USER_NAME}}-myfirst-api-server
                 port:
                   number: 8080
           - path: /actuator
             pathType: Prefix
             backend:
               service:
-                name: {{USER_NAME}}-webserver
+                name: {{USER_NAME}}-myfirst-api-server
                 port:
                   number: 8080
           - path: /

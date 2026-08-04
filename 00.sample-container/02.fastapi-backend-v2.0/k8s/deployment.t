@@ -10,20 +10,20 @@ metadata:
     prometheus.io/port: '8080'
     prometheus.io/path: '/python/prometheus'
     update: {{HASHCODE}}
-  name: {{USER_NAME}}-backend-v2
+  name: {{USER_NAME}}-myfirst-api-server
   namespace: {{NAMESPACE}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{USER_NAME}}-backend-v2
+      app: {{USER_NAME}}-myfirst-api-server
   template:
     metadata:
       labels:
-        app: {{USER_NAME}}-backend-v2
+        app: {{USER_NAME}}-myfirst-api-server
     spec:
       containers:
-        - name: backend
+        - name: fastapi
           image: {{DOCKER_REGISTRY}}/{{PROJECT_NAME}}/{{USER_NAME}}-webserver:2.0
           imagePullPolicy: Always
           ports:

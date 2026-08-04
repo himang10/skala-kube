@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: skala-webserver
+  namespace: class-0
+  labels:
+    app: skala-webserver
+spec:
+  containers:
+  - name: webserver
+    image: skala-registry.skala-ai.com/class-0/skala-webserver:1.0 
+    imagePullPolicy: Always
+    env:
+    - name: USER_NAME
+      value: skala
+    - name: CLASS_NAME
+      value: class-0

@@ -9,21 +9,21 @@ metadata:
     prometheus.io/scrape: 'true'
     prometheus.io/port: '8080'
     prometheus.io/path: '/python/prometheus'
-    update: ee4ad915
-  name: skala-backend-v2
+    update: 1639bd93
+  name: skala-myfirst-api-server
   namespace: class-0
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: skala-backend-v2
+      app: skala-myfirst-api-server
   template:
     metadata:
       labels:
-        app: skala-backend-v2
+        app: skala-myfirst-api-server
     spec:
       containers:
-        - name: backend
+        - name: fastapi
           image: skala-registry.skala-ai.com/class-0/skala-webserver:2.0
           imagePullPolicy: Always
           ports:

@@ -2,8 +2,9 @@
 USER_NAME=${STUDENT_NUM}
 IMAGE_NAME="webserver"
 VERSION="1.0"
-#IS_CACHE="--no-cache" 
+#IS_CACHE="--no-cache"
 
+mvn clean install -DskipTests
 # Docker 이미지 빌드
 docker buildx build \
   --tag ${USER_NAME}-${IMAGE_NAME}:${VERSION} \

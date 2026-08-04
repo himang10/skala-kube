@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubectl-deploy
+  labels:
+    app: kubectl-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubectl-deploy
+  template:
+    metadata:
+      labels:
+        app: kubectl-deploy
+    spec:
+      containers:
+        - name: linux
+          image: skala-registry.skala-ai.com/skala25a/skala-ubuntu-kubectl:1.0
+          imagePullPolicy: Always
+          env:
+            - name: KUBECONFIG
+              value: /root/.kube/config
+          volumeMounts:
+            - name: kubeconfig
+              mountPath: /root/.kube
+              readOnly: true
+      volumes:
+        - name: kubeconfig
+          secret:
+            secretName: kubeconfig-secret
+            defaultMode: 0600

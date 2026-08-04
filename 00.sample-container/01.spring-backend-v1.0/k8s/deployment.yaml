@@ -8,21 +8,21 @@ metadata:
     prometheus.io/scrape: 'true'
     prometheus.io/port: '8080'
     prometheus.io/path: '/actuator/prometheus'
-    update: ee4ad915
-  name: skala-webserver-v1
+    update: 1639bd93
+  name: skala-myfirst-api-server
   namespace: class-0
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: skala-webserver-v1
+      app: skala-myfirst-api-server
   template:
     metadata:
       labels:
-        app: skala-webserver-v1
+        app: skala-myfirst-api-server
     spec:
       containers:
-        - name: webserver
+        - name: myfirst-api-server
           image: skala-registry.skala-ai.com/class-0/skala-webserver:1.0
           imagePullPolicy: Always
           ports:

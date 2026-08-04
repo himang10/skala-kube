@@ -5,7 +5,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    update: ee4ad915
+    update: 1639bd93
   name: skala-frontend
   namespace: class-0
 spec:

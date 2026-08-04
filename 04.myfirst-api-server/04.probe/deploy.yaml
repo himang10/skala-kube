@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skala-myfirst-api-server
+  namespace: class-0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: skala-myfirst-api-server
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8080'
+        prometheus.io/path: '/actuator/prometheus'
+        update: 1639bd93
+      labels:
+        app: skala-myfirst-api-server
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: webserver
+        image: skala-registry.skala-ai.com/class-0/skala-webserver:1.0
+        imagePullPolicy: Always
+        env:
+        - name: USER_NAME
+          value: skala
+        - name: NAMESPACE
+          value: class-0
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          failureThreshold: 3
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          failureThreshold: 3
+          timeoutSeconds: 5
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+      volumes:
+      - name: config-volume
+        configMap:
+          name: skala-myfirst-configmap
+          items:
+          - key: application-prod.yaml
+            path: application-prod.yaml
+

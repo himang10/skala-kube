@@ -1,3 +1,2 @@
 pod.yaml
-pod-with-generateName.yaml
-deploy.yaml
+webserver-pod.yaml

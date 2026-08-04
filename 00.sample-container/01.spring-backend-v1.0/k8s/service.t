@@ -6,13 +6,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{USER_NAME}}-webserver
+  name: {{USER_NAME}}-myfirst-api-server
   namespace: {{NAMESPACE}}
 spec:
   type: ClusterIP
   selector:
-    app: {{USER_NAME}}-webserver-v1
+    app: {{USER_NAME}}-myfirst-api-server
   ports:
     - name: http
       port: 8080
       targetPort: 8080
+    - name: mgmt
+      port: 8081
+      targetPort: 8081
