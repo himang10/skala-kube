@@ -28,16 +28,32 @@ spec:
           value: skala
         - name: NAMESPACE
           value: class-0
-        - name: SPRING_PROFILES_ACTIVE  
-          value: "prod"  
-
-        #PVC를 /app/config로 마운트
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          failureThreshold: 3
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          failureThreshold: 3
+          timeoutSeconds: 5
         volumeMounts:
-        - name: efs-config
+        - name: config-volume
           mountPath: /app/config
-          readOnly: true
-
       volumes:
-      - name: efs-config
-        persistentVolumeClaim:
-          claimName: skala-efs-sc-myfirst-api-server-pvc
+      - name: config-volume
+        configMap:
+          name: skala-myfirst-configmap
+          items:
+          - key: application-prod.yaml
+            path: application-prod.yaml
+

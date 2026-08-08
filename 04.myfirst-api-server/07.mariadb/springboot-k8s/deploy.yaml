@@ -21,7 +21,7 @@ spec:
       serviceAccountName: default
       containers:
       - name: webserver
-        image: skala-registry.skala-ai.com/class-0/skala-webserver:1.0
+        image: skala-registry.skala-ai.com/skala-webserver:1.0
         imagePullPolicy: Always
         env:
         - name: USER_NAME
@@ -29,15 +29,4 @@ spec:
         - name: NAMESPACE
           value: class-0
         - name: SPRING_PROFILES_ACTIVE  
-          value: "prod"  
-
-        #PVC를 /app/config로 마운트
-        volumeMounts:
-        - name: efs-config
-          mountPath: /app/config
-          readOnly: true
-
-      volumes:
-      - name: efs-config
-        persistentVolumeClaim:
-          claimName: skala-efs-sc-myfirst-api-server-pvc
+          value: "mariadbsvc"  

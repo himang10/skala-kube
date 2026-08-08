@@ -5,22 +5,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    update: 1e02675a
-  name: skala-frontend
-  namespace: class-0
+    update: {{HASHCODE}}
+  name: {{USER_NAME}}-myfirst-frontend
+  namespace: {{NAMESPACE}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: skala-frontend
+      app: {{USER_NAME}}-myfirst-frontend
   template:
     metadata:
       labels:
-        app: skala-frontend
+        app: {{USER_NAME}}-myfirst-frontend
     spec:
       containers:
         - name: frontend
-          image: skala-registry.skala-ai.com/class-0/skala-frontend:1.0
+          image: {{DOCKER_REGISTRY}}/{{PROJECT_NAME}}/{{USER_NAME}}-frontend:1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 80

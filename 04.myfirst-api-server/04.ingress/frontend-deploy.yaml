@@ -6,17 +6,17 @@ kind: Deployment
 metadata:
   annotations:
     update: 1e02675a
-  name: skala-frontend
+  name: skala-myfirst-frontend
   namespace: class-0
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: skala-frontend
+      app: skala-myfirst-frontend
   template:
     metadata:
       labels:
-        app: skala-frontend
+        app: skala-myfirst-frontend
     spec:
       containers:
         - name: frontend

@@ -22,4 +22,4 @@ EXPOSE 8081
 ADD ./target/myapp-0.0.1-SNAPSHOT.jar  app.jar
 
 # 애플리케이션 실행 (JAVA_OPTS 환경변수 적용)
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
+CMD ["sh", "-c", "exec java $JAVA_OPTS -jar app.jar"]

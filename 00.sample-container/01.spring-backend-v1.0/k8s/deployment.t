@@ -21,6 +21,8 @@ spec:
       labels:
         app: {{USER_NAME}}-myfirst-api-server
     spec:
+      # SIGTERM 전달 후 강제 종료(SIGKILL)까지 대기하는 최대 시간
+      terminationGracePeriodSeconds: 20
       containers:
         - name: myfirst-api-server
           image: {{DOCKER_REGISTRY}}/{{PROJECT_NAME}}/{{USER_NAME}}-webserver:1.0
@@ -30,6 +32,11 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "local"
+          lifecycle:
+            preStop:
+              # Service 엔드포인트에서 빠질 시간을 확보한 뒤 SIGTERM 전달
+              exec:
+                command: ["sh", "-c", "sleep 5"]
           # 준비(readiness)가 끝나기 전에는 Service가 트래픽을 보내지 않는다.
           readinessProbe:
             httpGet:

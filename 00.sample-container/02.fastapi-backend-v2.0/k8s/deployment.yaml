@@ -9,7 +9,7 @@ metadata:
     prometheus.io/scrape: 'true'
     prometheus.io/port: '8080'
     prometheus.io/path: '/python/prometheus'
-    update: 1639bd93
+    update: 1e02675a
   name: skala-myfirst-api-server
   namespace: class-0
 spec:

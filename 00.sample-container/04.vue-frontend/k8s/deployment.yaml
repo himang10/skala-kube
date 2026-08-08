@@ -5,7 +5,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    update: 1639bd93
+    update: 1e02675a
   name: skala-vue-frontend
   namespace: class-0
 spec:
