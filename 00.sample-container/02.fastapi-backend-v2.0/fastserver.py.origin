@@ -3,8 +3,7 @@ from fastapi.responses import Response
 from fastapi.responses import HTMLResponse, JSONResponse
 import psutil
 import os
-import time
-from prometheus_client import Gauge, Histogram, generate_latest, CONTENT_TYPE_LATEST
+from prometheus_client import Gauge, generate_latest, CONTENT_TYPE_LATEST
 from pydantic import BaseModel, EmailStr
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
@@ -27,32 +26,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Spring Actuator의 http_server_requests_seconds 와 동일한 이름/구조(count, sum, bucket)로
-# 요청 처리 시간을 계측한다.
-http_server_requests_seconds = Histogram(
-    "http_server_requests_seconds",
-    "Duration of HTTP requests",
-    ["method", "uri", "status"],
-)
-
-@app.middleware("http")
-async def prometheus_http_metrics(request, call_next):
-    start = time.perf_counter()
-    response = await call_next(request)
-    duration = time.perf_counter() - start
-
-    # 원시 경로 대신 라우트 템플릿을 사용해 카디널리티 폭발을 방지 (예: /api/users/{user_id})
-    route = request.scope.get("route")
-    uri = route.path if route else request.url.path
-
-    http_server_requests_seconds.labels(
-        method=request.method,
-        uri=uri,
-        status=str(response.status_code),
-    ).observe(duration)
-
-    return response
 
 # Initial state
 data = {

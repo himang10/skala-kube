@@ -15,8 +15,8 @@ spec:
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '8080'
-        prometheus.io/path: '/actuator/prometheus'
-        update: 1e02675a
+        prometheus.io/path: '/python/prometheus'
+        update: 1e02675a1
       labels:
         app: skala-myfirst-api-server-new
     spec:
