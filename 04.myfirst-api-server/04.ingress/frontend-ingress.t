@@ -14,7 +14,7 @@ metadata:
   labels:
     app: {{USER_NAME}}-myfirst-ingress
 spec:
-  ingressClassName: public-nginx
+  ingressClassName: {{INGRESS_CLASS_NAME}}
   rules:
     - host: {{USER_NAME}}-ingress.cloud.skala-ai.com
       http:

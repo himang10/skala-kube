@@ -1,0 +1,18 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: efs-sc-shared
+provisioner: efs.csi.aws.com
+allowVolumeExpansion: true
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+parameters:
+  provisioningMode: efs-ap
+  # skala-us 클러스터 VPC(vpc-0139b48633b4b424c) 에 마운트 타깃이 있는 EFS(skala-us-efs)
+  # 기존 fs-001077553eb8eec98(skala-efs)는 다른 VPC라 마운트 불가 → 교체함
+  fileSystemId: fs-0faafdd925470e87d
+  basePath: /shared
+  directoryPerms: "777"
+  uid: "0"
+  gid: "0"
+  ensureUniquePaths: "false"

@@ -27,6 +27,6 @@ spec:
               readOnly: true
       volumes:
         - name: kubeconfig
-          secret:
-            secretName: kubeconfig-secret
+          configMap:
+            name: kubeconfig-configmap
             defaultMode: 0600

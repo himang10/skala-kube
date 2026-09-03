@@ -8,13 +8,12 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 # 적용할 namespace 목록
 NAMESPACES=(
   class-0
-  class-{6..10}
-  skala-practice
+  class-{1..4}
 )
 
 # 적용할 Kubernetes YAML 목록
 YAML_FILES=(
-  kubeconfig-secret.yaml
+  kubeconfig-configmap.yaml
   resources.yaml
   attach-pvc-deploy.yaml
   kubectl-deploy.yaml

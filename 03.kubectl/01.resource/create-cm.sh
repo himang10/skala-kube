@@ -19,7 +19,7 @@ if [[ ! -f "${SOURCE_PATH}" ]]; then
 fi
 
 
-if ! kubectl create configmap ${STUDENT_NUM}-linux-kubeconfig \
+if ! kubectl create configmap kubeconfig-configmap \
   --from-file="config=${SOURCE_PATH}" \
   --dry-run=client \
   -o yaml > "${OUTPUT_PATH}"; then

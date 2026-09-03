@@ -8,8 +8,7 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 # 삭제 대상 namespace 목록
 NAMESPACES=(
   class-0
-  class-{6..10}
-  skala-practice
+  class-{1..4}
 )
 
 # 삭제할 Kubernetes YAML 목록
@@ -17,7 +16,7 @@ YAML_FILES=(
   attach-pvc-deploy.yaml
   kubectl-deploy.yaml
   resources.yaml
-  kubeconfig-secret.yaml
+  kubeconfig-configmap.yaml
 )
 
 # YAML 파일이 없으면 어떤 리소스를 삭제할지 확인할 수 없으므로 중단합니다.

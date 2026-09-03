@@ -5,7 +5,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    update: 1e02675a
+    update: e5644ccb
   name: skala-vue-frontend
   namespace: class-0
 spec:
@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: vue-frontend
-          image: skala-registry.skala-ai.com/class-0/skala-vue-frontend:1.0
+          image: skala-registry.skala-us.com/class-0/skala-vue-frontend:1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 80

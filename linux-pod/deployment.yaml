@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: linux
-          image: skala-registry.skala-ai.com/skala-linux-kubectl:1.0
+          image: skala-registry.skala-us.com/skala-linux-kubectl:1.0
           imagePullPolicy: Always
           env:
             - name: KUBECONFIG

@@ -14,7 +14,7 @@ metadata:
   name: frontend
   namespace: {{NAMESPACE}}
 spec:
-  ingressClassName: public-nginx
+  ingressClassName: {{INGRESS_CLASS_NAME}}
   rules:
     - host: {{USER_NAME}}-frontend.cloud.skala-ai.com
       http:

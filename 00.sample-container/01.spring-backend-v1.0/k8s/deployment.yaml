@@ -8,7 +8,7 @@ metadata:
     prometheus.io/scrape: 'true'
     prometheus.io/port: '8080'
     prometheus.io/path: '/actuator/prometheus'
-    update: 1e02675a
+    update: e5644ccb
   name: skala-myfirst-api-server
   namespace: class-0
 spec:
@@ -25,7 +25,7 @@ spec:
       terminationGracePeriodSeconds: 20
       containers:
         - name: myfirst-api-server
-          image: skala-registry.skala-ai.com/class-0/skala-webserver:1.0
+          image: skala-registry.skala-us.com/class-0/skala-webserver:1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

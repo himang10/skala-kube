@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: webserver
-    image: skala-registry.skala-ai.com/class-0/skala-webserver:1.0 
+    image: skala-registry.skala-us.com/class-0/skala-webserver:1.0 
     imagePullPolicy: Always
     env:
     - name: USER_NAME

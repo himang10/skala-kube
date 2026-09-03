@@ -14,14 +14,14 @@ spec:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '8080'
         prometheus.io/path: '/actuator/prometheus'
-        update: 1e02675a
+        update: e5644ccb
       labels:
         app: skala-myfirst-api-server
     spec:
       serviceAccountName: default
       containers:
       - name: webserver
-        image: skala-registry.skala-ai.com/skala-webserver:1.0
+        image: skala-registry.skala-us.com/skala-webserver:1.0
         imagePullPolicy: Always
         env:
         - name: USER_NAME

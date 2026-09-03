@@ -5,7 +5,7 @@ IMAGE_NAME="frontend"
 VERSION="1.0"
 PROJECT_NAME=$CLASS_NAME
 
-DOCKER_REGISTRY="skala-registry.skala-ai.com"
+DOCKER_REGISTRY=${DOCKER_REGISTRY}
 
 
 # 1. Docker 레지스트리에 로그인 (옵션: 이 스크립트를 실행하기 전에 미리 로그인해두어도 됩니다)
