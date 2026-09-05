@@ -16,7 +16,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: skala-ingress.cloud.skala-ai.com
+    - host: skala-ingress.cloud.skala-us.com
       http:
         paths:
           - path: /api
@@ -42,5 +42,5 @@ spec:
                   number: 8080
   tls:
     - hosts:
-      - skala-ingress.cloud.skala-ai.com
+      - skala-ingress.cloud.skala-us.com
       secretName: skala-ingress-cloud-tls-cert

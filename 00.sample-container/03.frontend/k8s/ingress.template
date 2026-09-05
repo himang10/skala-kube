@@ -16,7 +16,7 @@ metadata:
 spec:
   ingressClassName: {{INGRESS_CLASS_NAME}}
   rules:
-    - host: {{USER_NAME}}-frontend.cloud.skala-ai.com
+    - host: {{USER_NAME}}-frontend.cloud.skala-{{LOCATION}}.com
       http:
         paths:
           - path: /api
@@ -49,5 +49,5 @@ spec:
                   number: 8080
   tls:
     - hosts:
-      - {{USER_NAME}}-frontend.cloud.skala-ai.com
+      - {{USER_NAME}}-frontend.cloud.skala-{{LOCATION}}.com
       secretName: {{USER_NAME}}-frontend-tls

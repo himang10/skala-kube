@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: {{INGRESS_CLASS_NAME}}
   rules:
-  - host: {{USER_NAME}}-ingress.cloud.skala-ai.com
+  - host: {{USER_NAME}}-ingress.cloud.skala-{{LOCATION}}.com
     http:
       paths:
       - backend:
@@ -22,5 +22,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - '{{USER_NAME}}-ingress.cloud.skala-ai.com'
+    - '{{USER_NAME}}-ingress.cloud.skala-{{LOCATION}}.com'
     secretName: {{USER_NAME}}-ingress-cloud-tls-cert
