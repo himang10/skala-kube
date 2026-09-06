@@ -1,5 +1,0 @@
-handle-pvc-pod.yaml
-service.yaml
-pvc.yaml
-application-prod.yaml
-deploy.yaml
