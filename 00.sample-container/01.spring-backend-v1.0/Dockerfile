@@ -19,7 +19,7 @@ EXPOSE 8081
 
 # 애플리케이션의 jar 파일을 컨테이너에 추가
 #ADD ${JAR_FILE}  app.jar
-ADD ./target/myapp-0.0.1-SNAPSHOT.jar  app.jar
+ADD ./target/*.jar  app.jar
 
 # 애플리케이션 실행 (JAVA_OPTS 환경변수 적용)
 CMD ["sh", "-c", "exec java $JAVA_OPTS -jar app.jar"]
