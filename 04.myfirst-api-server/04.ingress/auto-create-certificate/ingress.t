@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-#  annotations:
-#    cert-manager.io/cluster-issuer: letsencrypt-prod
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   name: {{USER_NAME}}-myfirst-ingress
   namespace: {{NAMESPACE}}
   labels:
@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: {{INGRESS_CLASS_NAME}}
   rules:
-  - host: {{USER_NAME}}-ingress.{{NAMESPACE}}.skala-{{LOCATION}}.com
+  - host: {{USER_NAME}}-ingress.cloud.skala-{{LOCATION}}.com
     http:
       paths:
       - backend:
@@ -22,5 +22,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - '{{USER_NAME}}-ingress.{{NAMESPACE}}.skala-{{LOCATION}}.com'
-    secretName: wildcard-{{NAMESPACE}}-skala-{{LOCATION}}-com-tls
+    - '{{USER_NAME}}-ingress.cloud.skala-{{LOCATION}}.com'
+    secretName: {{USER_NAME}}-ingress-cloud-tls-cert
