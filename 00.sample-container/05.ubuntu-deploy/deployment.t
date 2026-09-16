@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: linux
-          image: {{DOCKER_REGISTRY}}/{{USER_NAME}}-linux-kubectl:1.0
+          image: {{DOCKER_REGISTRY}}/skala-linux-kubectl:1.0
           imagePullPolicy: Always
           env:
             - name: KUBECONFIG

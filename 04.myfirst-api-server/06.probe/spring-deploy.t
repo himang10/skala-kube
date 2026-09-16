@@ -35,7 +35,7 @@ spec:
             path: /actuator/health/liveness
             port: 8080
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           failureThreshold: 3
           timeoutSeconds: 5
         readinessProbe:
@@ -43,17 +43,7 @@ spec:
             path: /actuator/health/readiness
             port: 8080
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           failureThreshold: 3
           timeoutSeconds: 5
-        volumeMounts:
-        - name: config-volume
-          mountPath: /app/config
-      volumes:
-      - name: config-volume
-        configMap:
-          name: {{USER_NAME}}-myfirst-configmap
-          items:
-          - key: application-prod.yaml
-            path: application-prod.yaml
 
