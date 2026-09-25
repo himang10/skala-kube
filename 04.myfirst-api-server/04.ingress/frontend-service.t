@@ -5,6 +5,8 @@ kind: Service
 metadata:
   name: {{USER_NAME}}-myfirst-frontend
   namespace: {{NAMESPACE}}
+  labels:
+    app: {{USER_NAME}}-myfirst-frontend
 spec:
   type: ClusterIP
   selector:

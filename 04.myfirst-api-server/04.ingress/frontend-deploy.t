@@ -8,6 +8,8 @@ metadata:
     update: {{HASHCODE}}
   name: {{USER_NAME}}-myfirst-frontend
   namespace: {{NAMESPACE}}
+  labels:
+    app: {{USER_NAME}}-myfirst-frontend
 spec:
   replicas: 1
   selector:

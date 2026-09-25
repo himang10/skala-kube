@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: {{USER_NAME}}-{{SERVICE_NAME}}
   namespace: {{NAMESPACE}}
+  labels:
+    app: {{USER_NAME}}-{{SERVICE_NAME}}
 spec:
   replicas: {{REPLICAS}}
   selector:
